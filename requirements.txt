@@ -1,0 +1,13 @@
+faster_whisper
+soundfile
+faiss-cpu
+librosa
+twilio
+flask 
+mysql-connector
+sentence_transformers
+pandas
+ollama
+uuid
+tensorflow
+TTS
