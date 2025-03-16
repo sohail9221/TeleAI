@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h2>Menu</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Dish</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in menu %}
+                <tr>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>Rs. {{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    <td>{% if item[5] %} Available {% else %} Out of Stock {% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
