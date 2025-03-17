@@ -8,9 +8,11 @@
     <h1 class="text-3xl font-bold mb-6">Welcome to TeleAI</h1>
     
     <div class="flex space-x-4">
-     
-        <a href="{{ url_for('login') }}">
-            <button class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Log In</button>
+        <a href="{{ url_for('login', role='user') }}">
+            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">User Login</button>
+        </a>
+        <a href="{{ url_for('login', role='admin') }}">
+            <button class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700">Admin Login</button>
         </a>
     </div>
 </body>
