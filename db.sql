@@ -1,7 +1,8 @@
 -- Create Database
-CREATE DATABASE CulinaryAI;
-USE CulinaryAI;
-
+CREATE DATABASE TeleAI;
+use TeleAI;
+SELECT o.id, u.name, o.status, o.total_price, o.payment_method FROM Orders o JOIN Users u ON o.user_id = u.id
+SELECT * from users;
 -- Users Table (Admins & Workers)
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -65,7 +66,7 @@ CREATE TABLE GeneralInfo (
     question VARCHAR(255) NOT NULL,
     answer TEXT NOT NULL
 );
-
+SELECT id, name, description, price, category, availability FROM Menu
 
 
 -- Insert Users (Admins & Workers)
@@ -140,4 +141,5 @@ INSERT INTO OrderTracking (OrderID, CustomerName, Status) VALUES
 (2, 'Ali Khan', 'Pending'),
 (3, 'Sarah Ahmed', 'Preparing')
 
-
+select * from Menu;
+SELECT CustomerID, Name, PhoneNumber, DietaryConstraints, Allergy FROM customers

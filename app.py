@@ -226,6 +226,31 @@ def get_sales_trends():
     conn.close()
     return jsonify({"labels": labels, "data": data})
 
+
+@app.route('/add_item', methods=['POST'])
+def add_item():
+    # Get form data
+    name = request.form.get('name')
+    description = request.form.get('description')
+    price = float(request.form.get('price'))
+    category = request.form.get('category')
+    availability = bool(int(request.form.get('availability')))
+
+    # Insert new item into the database
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    query = """
+        INSERT INTO Menu (name, description, price, category, availability)
+        VALUES (%s, %s, %s, %s, %s)
+    """
+    cursor.execute(query, (name, description, price, category, availability))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    # Redirect back to the menu page
+    return redirect(url_for('menu'))
+
 # API for Recent Orders Table
 @app.route('/api/dashboard/recent-orders', methods=['GET'])
 def get_recent_orders():

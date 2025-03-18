@@ -41,6 +41,12 @@
             background-color: #ffe5e5;
             color: #dc3545;
         }
+        .add-item-form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +92,55 @@
     <!-- Menu Content -->
     <div class="container-fluid">
         <h2 class="ms-3">Menu</h2>
+        <!-- Add Item Button -->
+        <button class="btn btn-primary ms-3 mb-3" data-bs-toggle="modal" data-bs-target="#addItemModal">
+            Add Item
+        </button>
+
+        <!-- Add Item Modal -->
+        <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addItemModalLabel">Add New Menu Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addItemForm" action="{{ url_for('add_item') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Dish Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <input type="text" class="form-control" id="category" name="category" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="availability" class="form-label">Availability</label>
+                                <select class="form-select" id="availability" name="availability" required>
+                                    <option value="1">Available</option>
+                                    <option value="0">Out of Stock</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="addItemForm" class="btn btn-primary">Add Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Table -->
         <div class="table-container">
             <table>
                 <thead>
@@ -100,7 +155,7 @@
                 <tbody>
                     {% for item in menu %}
                     <tr>
-                        <td>{{ item['name'] }}</td>  <!-- Access by dictionary key -->
+                        <td>{{ item['name'] }}</td>
                         <td>{{ item['description'] }}</td>
                         <td>Rs. {{ item['price'] }}</td>
                         <td>{{ item['category'] }}</td>
@@ -116,5 +171,8 @@
             </table>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
