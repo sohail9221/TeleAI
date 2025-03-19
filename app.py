@@ -251,6 +251,10 @@ def add_item():
     # Redirect back to the menu page
     return redirect(url_for('menu'))
 
+@app.route('/calls')
+def calls():
+    return render_template('calltaking.html')
+
 # API for Recent Orders Table
 @app.route('/api/dashboard/recent-orders', methods=['GET'])
 def get_recent_orders():
