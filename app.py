@@ -48,6 +48,7 @@ def answer_call():
 
     return str(response)
 
+
 @app.route("/process_speech", methods=['POST'])
 def process_speech():
     """Process the user's speech input and repeat it back."""
@@ -57,6 +58,12 @@ def process_speech():
     response = VoiceResponse()
 
     if user_speech:
+        # Store the transcript in the session
+        if 'transcript' not in session:
+            session['transcript'] = []
+        session['transcript'].append({"speaker": "customer", "text": user_speech})
+        session.modified = True  # Ensure the session is saved
+
         # Repeat back the user's speech
         response.say(f"You said: {user_speech}")
     else:
@@ -94,6 +101,11 @@ def signup():
 
     return render_template('admin_signup.html', error=error)
 
+@app.route('/api/calls/transcript', methods=['GET'])
+def get_transcript():
+    """Fetch the call transcript."""
+    transcript = session.get('transcript', [])
+    return jsonify(transcript)
 # Route for Login Page
 
 @app.route('/login', methods=['GET', 'POST'])
