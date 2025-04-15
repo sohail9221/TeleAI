@@ -1,4 +1,5 @@
 TeleAI
+
 TeleAI is an AI-powered voice assistant designed to automate order-taking processes in restaurants and fast-food chains via phone calls. By leveraging cutting-edge technologies in Automatic Speech Recognition (ASR), Natural Language Processing (NLP), and Text-to-Speech (TTS), TeleAI facilitates seamless, human-like interactions with customers, enhancing efficiency and customer satisfaction.​
 
 🧠 Features
